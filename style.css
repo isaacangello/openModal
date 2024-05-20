@@ -25,6 +25,19 @@
     padding: 5px 10px;
     cursor: pointer;
 }
+.btn-red{
+    background: #d30017;
+    color:#FFF;
+    border: 1px solid #d30017;
+    padding: 5px 10px;
+}
+.btn-red:hover{
+    background: white;
+    color:#d30017;
+    border: 1px solid #d30017;
+    padding: 5px 10px;
+    cursor: pointer;
+}
 
 input{
    border:1px solid #05672b;

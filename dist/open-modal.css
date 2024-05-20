@@ -24,15 +24,15 @@
 .modal-header, .modal-body, .modal-footer{
     padding: 10px;
 }
-.modal-header{
+.open-modal .modal-content .modal-header{
     background: rgb(42,111,70);
     background: linear-gradient(90deg, rgba(42,111,70,1) 0%, rgba(14,166,11,1) 100%);
     color:#FFFFFF;
 }
-.modal-header .info-box-2{
+.open-modal .modal-content .modal-header .info-box-2{
     display: flex;
 }
-.modal-header .info-box-2 .icon  {
+.open-modal .modal-content .modal-header .info-box-2 .icon  {
     text-align: center;
     justify-content: center;
     justify-items: center;
@@ -40,24 +40,69 @@
     padding-top: 1%;
     /*border: 1px solid #fff;*/
 }
-.modal-header .info-box-2 .icon i{
+.open-modal .modal-content .modal-header .info-box-2 .icon i{
     font-size:2.5em ;
 
 }
-.modal-header .info-box-2 .content{
+.open-modal .modal-content .modal-header .info-box-2 .content{
     width: 79.9%;
     clear: both;
     /*border: 1px solid #fff;*/
 }
-.modal-header .info-box-2 .content .customer-label{
+.open-modal .modal-content .modal-header .info-box-2 .content .customer-label{
     font-size: 0.8em;
 }
-.modal-header .info-box-2 .content .customer-name{
+.open-modal .modal-header .info-box-2 .content .customer-name{
     font-size: 1.5em;
 }
-.modal-body{
-
+.open-modal .modal-content .modal-body .modal-table{
+    width: 100%;
 }
-.modal-footer{
+.open-modal .modal-content .modal-footer{
+    text-align: right;
+}
+.open-modal .modal-content .modal-header .info-box-2.hover-expand-effect:after {
+    background-color: rgba(0, 0, 0, 0.05);
+    content: ".";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 100%;
+    color: transparent;
+    -moz-transition: all 0.95s;
+    -o-transition: all 0.95s;
+    -webkit-transition: all 0.95s;
+    transition: all 0.95s; }
 
+.open-modal .modal-content .modal-header .info-box-2.hover-expand-effect:hover:after {
+    width: 100%; 
+}
+
+.open-modal .modal-content .modal-body .modal-table{
+    width: 100%;
+    border-collapse: collapse;
+}
+.open-modal .modal-content .modal-body .modal-table > tbody > tr > th {
+    background-color: #05672b;
+    border-top:1px solid #05672b;
+    border-bottom:1px solid #fff;
+    color:white;
+    width: 25%!important;
+}
+.open-modal .modal-content .modal-body .modal-table > tbody > tr > td {
+    border-top: 1px solid #05672b;
+    border-left: 1px solid #05672b;
+    width: auto;
+    padding-left: 3px;
+    transition: all 0.2s;
+}
+
+.open-modal .modal-content .modal-body .modal-table > tbody > tr:hover > th{
+    background-color: green;
+}
+
+.open-modal .modal-content .modal-body .modal-table > tbody > tr:hover > td {
+    background-color: #eee;
+    padding-left: 6px;
 }
