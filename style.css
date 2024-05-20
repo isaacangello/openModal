@@ -1,0 +1,44 @@
+@font-face {
+    font-family: "Playfair Display";
+    src: url("./lib/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf");
+}
+/*.playfair-display-<uniquifier> {*/
+/*                       font-family: "Playfair Display", serif;*/
+/*                       font-optical-sizing: auto;*/
+/*                       font-weight: <weight>;*/
+/*                       font-style: normal;*/
+/*                   }*/
+
+*{
+    font-family: "Playfair Display", serif;
+}
+.btn{
+    background: green;
+    color:#FFF;
+    border: 1px solid #05672b;
+    padding: 5px 10px;
+}
+.btn:hover{
+    background: white;
+    color:green;
+    border: 1px solid #05672b;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+input{
+   border:1px solid #05672b;
+    color: #05672b;
+}
+input:hover{
+    border:1px solid green;
+    color: green;
+}
+textarea{
+    border:1px solid #05672b;
+    color: #05672b;
+}
+textarea:hover{
+    border:1px solid green;
+    color: green;
+}

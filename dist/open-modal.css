@@ -1,0 +1,63 @@
+.open-modal{
+    background-color: rgba(5, 103, 43, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    justify-items: flex-end;
+    justify-content: space-between;
+
+}
+
+.modal-content{
+ background-color: #FFFFFF;
+    width: 45vw;
+    margin: 50px  1vw 0 3vw;
+    position: relative;
+    float: left;
+    webkit-box-shadow: 12px 18px 82px 0px rgba(0,0,0,0.38);
+    -moz-box-shadow: 12px 18px 82px 0px rgba(0,0,0,0.38);
+    box-shadow: 12px 18px 82px 0px rgba(0,0,0,0.38);
+    border-radius: 1px;
+}
+.modal-header, .modal-body, .modal-footer{
+    padding: 10px;
+}
+.modal-header{
+    background: rgb(42,111,70);
+    background: linear-gradient(90deg, rgba(42,111,70,1) 0%, rgba(14,166,11,1) 100%);
+    color:#FFFFFF;
+}
+.modal-header .info-box-2{
+    display: flex;
+}
+.modal-header .info-box-2 .icon  {
+    text-align: center;
+    justify-content: center;
+    justify-items: center;
+    width: 10%;
+    padding-top: 1%;
+    /*border: 1px solid #fff;*/
+}
+.modal-header .info-box-2 .icon i{
+    font-size:2.5em ;
+
+}
+.modal-header .info-box-2 .content{
+    width: 79.9%;
+    clear: both;
+    /*border: 1px solid #fff;*/
+}
+.modal-header .info-box-2 .content .customer-label{
+    font-size: 0.8em;
+}
+.modal-header .info-box-2 .content .customer-name{
+    font-size: 1.5em;
+}
+.modal-body{
+
+}
+.modal-footer{
+
+}
