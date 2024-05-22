@@ -2,6 +2,81 @@
     font-family: "Playfair Display";
     src: url("./lib/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf");
 }
+@font-face {
+    font-family: "Roboto", sans-serif;
+    src: url("lib/fonts/Roboto/Roboto-Regular.ttf");
+}
+.roboto-thin {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: normal;
+}
+
+.roboto-light {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.roboto-regular {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.roboto-medium {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: normal;
+}
+
+.roboto-bold {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.roboto-black {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: normal;
+}
+
+.roboto-thin-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.roboto-light-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    font-style: italic;
+}
+
+.roboto-regular-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.roboto-medium-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 500;
+    font-style: italic;
+}
+
+.roboto-bold-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+.roboto-black-italic {
+    font-family: "Roboto", sans-serif;
+    font-weight: 900;
+    font-style: italic;
+}
 /*.playfair-display-<uniquifier> {*/
 /*                       font-family: "Playfair Display", serif;*/
 /*                       font-optical-sizing: auto;*/
@@ -10,7 +85,10 @@
 /*                   }*/
 
 *{
-    font-family: "Playfair Display", serif;
+    font-family: "Roboto", serif;
+}
+.hide{
+    display: none!important;
 }
 .btn{
     background: green;
@@ -40,11 +118,17 @@
 }
 
 input{
-   border:1px solid #05672b;
-    color: #05672b;
+   border:none;
+    font-size: inherit;
+    color: #1e1a1a;
+}
+input:focus, input:focus-visible{
+    /*border:1px solid #05672b;*/
+    outline: none;
 }
 input:hover{
-    border:1px solid green;
+    /*border:1px solid green;*/
+    /*background-color: transparent;*/
     color: green;
 }
 textarea{

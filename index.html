@@ -10,7 +10,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <body>
 <div>
-    <button class="btn"> show modal</button>
+    <button id="showModal" class="btn"> show modal</button>
 </div>
 <div>
     <p>
@@ -20,8 +20,8 @@
         I'm not out of breath anymore!
     </p>
 </div>
-<div class="open-modal">
-    <div class="modal-content">
+<div class="open-modal hide animate__animated animate__bounceInLeft animate__faster">
+    <div class="modal-content animate__animated animate__backInDown">
         <div class="modal-header">
             <div class="info-box-2 bg-teal hover-expand-effect">
                 <div class="icon">
@@ -36,10 +36,10 @@
         <div class="modal-body">
             <table class="modal-table">
                 <tbody>
-                    <tr><th colspan="1">Address</th><td colspan="3">9044 NW 28 Dr Apt 304 Coral Springs FL</td></tr>
+                    <tr><th colspan="1">Address</th><td colspan="3"><input type="text" value="9044 NW 28 Dr Apt 304 Coral Springs FL" /></td></tr>
                     <tr><th colspan="1">Phone</th><td colspan="3">4126800610</td></tr>
                     <tr><th>Date:</th><td>05/20/2024</td><th >Time</th><td>12:00 PM</td></tr>
-                    <tr><th>In:</th><td>12:33 PM</td><th >Out</th><td>16:16</td></tr>
+                    <tr><th>In:</th><td>12:33 PM</td><th >Out</th><td>16:16 PM</td></tr>
                     <tr><th colspan="4">notes</th></tr>
                     <tr><td colspan="4">
                         Have you urinated? Have you drained your bladder? Are you free? Because if you haven't it will only come out later. I'm giving you some information that your bodily fluids may penetrate your clothing fibre's without warning.Go with the feeling of the nature. Take it easy. Know why you're here. And remember to balance your internal energy with the environment.
@@ -51,10 +51,10 @@
         </div>
         <div class="modal-footer">
             <button id="editButton" class="btn">edit</button>
-            <button class="btn-red">cancel</button>
+            <button id="cancelButton" class="btn-red">cancel</button>
         </div>
     </div>
-    <div class="modal-content">
+    <div class="modal-content animate__animated animate__backInDown">
         <div class="modal-header">
             <div class="info-box-2 bg-teal hover-expand-effect">
                 <div class="icon">
@@ -69,8 +69,9 @@
         <div class="modal-body">
             <table class="modal-table">
                 <tr><th>Place type</th><td>Hental House</td></tr>
-                <tr><th>service charge</th><td>price for Biweekly / R$200</td></tr>
-                <tr><th>service frequency</th><td>Biweekly</td></tr>
+                <tr><th>Charge</th><td>price for Biweekly / R$200</td></tr>
+                <tr><th>Frequency</th><td>Biweekly</td></tr>
+                <tr><th>&nbsp;</th><td>&nbsp;</td></tr>
                 <tr><th colspan="2">Instruction</th></tr>
                 <tr>
                     <td colspan="2">
@@ -79,9 +80,10 @@
                 </tr>
             </table>
         </div>
-        <div class="modal-footer">footer modal</div>
+        <div class="modal-footer">&nbsp;</div>
     </div>
 
 </div>
+<script src="dist/open-modal.js"></script>
 </body>
 </html>
