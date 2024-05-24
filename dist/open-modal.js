@@ -14,6 +14,7 @@ class OpenModal{
             containerClass = 'open-modal',
             contentClass = 'modal-content',
             hideClass = 'hide',
+            containerBackground = false,
             containerEffects = false,
             contentEffects = false,
         } = params
@@ -34,6 +35,8 @@ class OpenModal{
         let {containerInEffects = this.bounceInLeft,containerOutEffects = this.bounceOut} = containerEffects
         this.containerInEffects = containerInEffects
         this.containerOutEffects = containerOutEffects
+
+        this.containerBackground = containerBackground
 
         let {contentInEffects = this.backInDown,contentOutEffects = this.bounceOut } = contentEffects
         this.contentInEffects = contentInEffects
@@ -84,6 +87,10 @@ class OpenModal{
     }
 
     init(){
+
+    if (this.containerBackground){
+        this.openModal.style.backgroundColor = this.containerBackground
+    }
     this.showModal.addEventListener('click',() => {
 
         this.removeAnimate(this.containerClass, this.containerOutEffects)
