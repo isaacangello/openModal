@@ -8,20 +8,69 @@
 <link rel="stylesheet" href="dist/open-modal.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-<body>
-<div>
-    <button id="botaoMostrar" class="btn"> show modal</button>
+<link rel="stylesheet" href="lib/node-waves/dist/waves.min.css"/>
+<body class="style_body">
+<div class="container-all">
+            <div>
+                <h1>Open Modal </h1>
+                <button id="StdModal" class="btn btn-secondary">Modern Modal</button>
+            </div>
+    <hr>
+            <div>
+                <label for="select-effect">Select one effect</label>
+                <select id="select-effect">
+                    <option value="">Effects</option>
+                </select>
+                <button id="SlEffect" class="btn btn-primary"> Selected Effect</button>
+
+            </div>
+    <hr>
+            <div>
+                <h2>
+                    Modal which two windows
+                </h2>
+                <button id="botaoMostrar" class="btn btn-success"> show modal</button>
+            </div>
+
+            <hr>
+    <div>
+        <h2>
+            similar bootstrap Modal
+        </h2>
+    </div>
+
+    <button id="bsShowModal" class="btn btn-primary">Bootstrap Modal</button>
+    <hr>
+    <div>
+        <h2>
+            similar Materialize.css Modal
+        </h2>
+    </div>
+
+    <button id="mtShowModal" class="btn-materialize teal">Materialize Modal</button>
+    <!-- Modal materialize -->
+    <div id="modal1" class="modal-materialize hide">
+        <div class="modal-content-mt">
+                <div class="modal-body">
+                    <h4>Modal Header</h4>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                        sunt in culpa qui officia deserunt mollit anim id est laborum
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button id="btn-close" class="btn-materialize">disAgree</button>
+                    <button  class="btn-materialize">Agree</button>
+                </div>
+        </div>
+    </div>
 </div>
-<div>
-    <p>
-        Busey ipsum dolor sit amet. These kind of things only happen for the first time once.
-        Sometimes horses cough and fart at the same time, so stay out of the range of its
-        butt muscle because a horses butt muscle is thick.Did you feel that? Look at me -
-        I'm not out of breath anymore!
-    </p>
-</div>
-<div class="open-modal hide ">
-    <div class="modal-content ">
+<!-- modal standard-->
+<div class="open-modal hide">
+    <div class="modal-content">
         <div class="modal-header">
             <div class="info-box-2 bg-teal hover-expand-effect">
                 <div class="icon">
@@ -36,24 +85,25 @@
         <div class="modal-body">
             <table class="modal-table">
                 <tbody>
-                    <tr><th colspan="1">Address</th><td colspan="3"><input type="text" value="9044 NW 28 Dr Apt 304 Coral Springs FL" /></td></tr>
-                    <tr><th colspan="1">Phone</th><td colspan="3">4126800610</td></tr>
-                    <tr><th>Date:</th><td>05/20/2024</td><th >Time</th><td>12:00 PM</td></tr>
-                    <tr><th>In:</th><td>12:33 PM</td><th >Out</th><td>16:16 PM</td></tr>
-                    <tr><th colspan="4">notes</th></tr>
-                    <tr><td colspan="4">
-                        Have you urinated? Have you drained your bladder? Are you free? Because if you haven't it will only come out later. I'm giving you some information that your bodily fluids may penetrate your clothing fibre's without warning.Go with the feeling of the nature. Take it easy. Know why you're here. And remember to balance your internal energy with the environment.
-                    </td>
-                    </tr>
+                <tr><th colspan="1">Address</th><td colspan="3"><input type="text" value="9044 NW 28 Dr Apt 304 Coral Springs FL" /></td></tr>
+                <tr><th colspan="1">Phone</th><td colspan="3">4126800610</td></tr>
+                <tr><th>Date:</th><td>05/20/2024</td><th >Time</th><td>12:00 PM</td></tr>
+                <tr><th>In:</th><td>12:33 PM</td><th >Out</th><td>16:16 PM</td></tr>
+                <tr><th colspan="4">notes</th></tr>
+                <tr><td colspan="4">
+                    Have you urinated? Have you drained your bladder? Are you free? Because if you haven't it will only come out later. I'm giving you some information that your bodily fluids may penetrate your clothing fibre's without warning.Go with the feeling of the nature. Take it easy. Know why you're here. And remember to balance your internal energy with the environment.
+                </td>
+                </tr>
                 </tbody>
-                
+
             </table>
         </div>
         <div class="modal-footer">
-            <button id="editButton" class="btn">edit</button>
+            <button id="editButton" class="btn-green">edit</button>
             <button id="cancelButton" class="btn-red">cancel</button>
         </div>
     </div>
+
     <div class="modal-content">
         <div class="modal-header">
             <div class="info-box-2 bg-teal hover-expand-effect">
@@ -84,6 +134,55 @@
     </div>
 
 </div>
+<!-- Modal Bootstrap -->
+<div class="modal-bootstrap hide" >
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="btn-up-close" data-bs-dismiss="modal" aria-label="Close">
+                                <span class="material-symbols-outlined">
+                                    close
+                                </span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Modal body text goes here.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="bsBtnClose" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-modern" >
+    <div class="modal-dialog-modern">
+        <div class="modal-content-modern">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="btn-up-close" data-bs-dismiss="modal" aria-label="Close">
+                                <span class="material-symbols-outlined">
+                                    close
+                                </span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>This is a moderm modal</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="ModernBtnClose" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="lib/node-waves/dist/waves.min.js"></script>
 <script src="main.js" type="module"></script>
+<script type="text/javascript">
+    Waves.attach('.btn-materialize',['waves-effect','waves-teal']);
+    Waves.init();
+</script>
 </body>
 </html>

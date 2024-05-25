@@ -1,0 +1,18 @@
+{
+  "backInDown": {"in":["animate__animated", "animate__backInDown"],"out":["animate__animated", "animate__backOutUp"]},
+  "backInLeft": {"in":["animate__animated", "animate__backInLeft"],"out":["animate__animated", "animate__backOutLeft"]},
+  "backInRight": {"in":["animate__animated", "animate__backInRight"],"out":["animate__animated", "animate__backOutRight"]},
+  "backInUp": {"in":["animate__animated", "animate__backInUp"],"out":["animate__animated", "animate__backOutDown"]},
+  "Bounce": {"in":["animate__animated", "animate__bounce"],"out":["animate__animated", "animate__backOutDown"]},
+  "bounceIn": {"in":["animate__animated", "animate__bounceIn"],"out":["animate__animated", "animate__bounceOut"]},
+  "bounceInDown": {"in":["animate__animated", "animate__bounceInDown"],"out":["animate__animated", "animate__bounceOutUp"]},
+  "bounceInLeft": {"in":["animate__animated", "animate__bounceInLeft"],"out":["animate__animated", "animate__bounceOutLeft"]},
+  "bounceInRight": {"in":["animate__animated", "animate__bounceInRight"],"out":["animate__animated", "animate__bounceOutRight"]},
+  "bounceInUp": {"in":["animate__animated", "animate__bounceInUp"],"out":["animate__animated", "animate__bounceOutDown"]},
+  "fadeIn": {"in":["animate__animated", "animate__fadeIn"],"out":["animate__animated", "animate__fadeOut"]},
+  "fadeInDown": {"in":["animate__animated", "animate__fadeInDown"],"out":["animate__animated", "animate__fadeInDown"]},
+  "fadeInLeft": {"in":["animate__animated", "animate__fadeInLeft"],"out":["animate__animated", "animate__fadeOutLeft"]},
+  "fadeInRight": {"in":["animate__animated", "animate__fadeInRight"],"out":["animate__animated", "animate__fadeOutRight"]},
+  "fadeInUp": {"in":["animate__animated", "animate__fadeInUp"],"out":["animate__animated", "animate__fadeOutDown"]},
+  "hingeOut": {"in":["animate__animated", "animate__jackInTheBox"],"out":["animate__animated", "animate__hinge"]}
+}

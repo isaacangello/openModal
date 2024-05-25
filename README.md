@@ -3,8 +3,11 @@
 Open Modal is a pure Js module, which uses the [animate.css](https://animate.style/) library to create the modal effects.
 
 ### install 
-```js
-npm install open-modal
+
+```bash
+
+  npm install open-modal
+
 ```
 ### How to use?
 
@@ -21,6 +24,8 @@ openModal.init()
 After the Open modal is initialized, you will need a button with a defined ID that by default works with the ID "showModal", and you will also need a modal window with a css class to hide and show the modal elements, this class could be the class [".hide"](https://materializecss.com/helpers.html#hiding) of [materialize.css](https://materializecss.com/helpers.html#hiding)
 or the ['.d-none"](https://getbootstrap.com/docs/5.3/utilities/display/#hiding-elements) class from [bootstrap](https://getbootstrap.com/docs/5.3/utilities/display/#hiding-elements), or you can define your own class to hide/show the modal elements.
 You will need a Container div with the class ".open-modal" defined, or a class of its own defined in the cotainer, and a div with a class defined as modal-content, this step is important to activate the effects.
+
+
 
 ##### button code example
 ```xhtml
@@ -118,8 +123,8 @@ openModal.init()
 
 ```
  ### Options and standards values
-```json
-    {
+```js
+   let options = {
             btnShowId : "showModal",            
             btnCancelId : "cancelButton",
             containerClass : 'open-modal',
@@ -131,18 +136,17 @@ openModal.init()
   }
 ```
 
-  ---| **_Options_**                                             |---
- ------------- |-----------------------------------------------------------|--
-**Option key**| **Standard value**                                        | **Option value description** | 
-btnShowId  |  "showModal"| Receives the id of the button responsible for opening the modal using the click event.
- btnCancelId     |  "cancelButton" | Receives the id of the button responsible for closing the modal    
- containerClass     |   "open-modal" | Receives the Class of the modal container   
-contentClass     | 'modal-content'| Receives the Class of the div in which the content is located        
- hideClass | "hide"|This css class that hides the elements, this class is applied together with the '.open-modal" class                                             
-containerBackground|    false | this value receives the Rgb or Exadecimal code for a color,                         
-containerEffects| false | This Key returns an array as values containing the classes necessary to activate the effects in the container div using the animate.css library
-contentEffects| false| This Key returns an array as values containing the classes necessary to activate the effects in the content div using the animate.css library
-
+| ---                 | **_Options_**      | ---                                                                                                                                             |
+|---------------------|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Option key**      | **Standard value** | **Option value description**                                                                                                                    | 
+| btnShowId           | "showModal"        | Receives the id of the button responsible for opening the modal using the click event.                                                          |
+| btnCancelId         | "cancelButton"     | Receives the id of the button responsible for closing the modal                                                                                 |
+| containerClass      | "open-modal"       | Receives the Class of the modal container                                                                                                       |
+| contentClass        | 'modal-content'    | Receives the Class of the div in which the content is located                                                                                   |
+| hideClass           | "hide"             | This css class that hides the elements, this class is applied together with the '.open-modal" class                                             |
+| containerBackground | false              | this value receives the Rgb or Exadecimal code for a color,                                                                                     |
+| containerEffects    | false              | This Key returns an array as values containing the classes necessary to activate the effects in the container div using the animate.css library |
+| contentEffects      | false              | This Key returns an array as values containing the classes necessary to activate the effects in the content div using the animate.css library   |
 
 ### Exemple of containerEffects & contentEffects
 
