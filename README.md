@@ -25,6 +25,8 @@ After the Open modal is initialized, you will need a button with a defined ID th
 or the ['.d-none"](https://getbootstrap.com/docs/5.3/utilities/display/#hiding-elements) class from [bootstrap](https://getbootstrap.com/docs/5.3/utilities/display/#hiding-elements), or you can define your own class to hide/show the modal elements.
 You will need a Container div with the class ".open-modal" defined, or a class of its own defined in the cotainer, and a div with a class defined as modal-content, this step is important to activate the effects.
 
+#### OBS
+If you want to use the project's css, there is an open-modal css file in the same folder as the module
 
 
 ##### button code example
@@ -33,76 +35,25 @@ You will need a Container div with the class ".open-modal" defined, or a class o
 ```
 ##### Modal code example
 ```xhtml
-<div class="open-modal hide ">
-    <div class="modal-content ">
-        <div class="modal-header">
-            <div class="info-box-2 bg-teal hover-expand-effect">
-                <div class="icon">
-                    <i class="material-symbols-outlined">cleaning_services</i>
-                </div>
-                <div class="content">
-                    <div class="customer-label">CUSTOMER</div>
-                    <div class="customer-name">Ishdeep Singh</div>
-                </div>
-            </div>
-        </div>
+    <div id="modal1" class="open-modal hide">
+    <div class="modal-content">
         <div class="modal-body">
-            <table class="modal-table">
-                <tbody>
-                    <tr><th colspan="1">Address</th><td colspan="3"><input type="text" value="9044 NW 28 Dr Apt 304 Coral Springs FL" /></td></tr>
-                    <tr><th colspan="1">Phone</th><td colspan="3">4126800610</td></tr>
-                    <tr><th>Date:</th><td>05/20/2024</td><th >Time</th><td>12:00 PM</td></tr>
-                    <tr><th>In:</th><td>12:33 PM</td><th >Out</th><td>16:16 PM</td></tr>
-                    <tr><th colspan="4">notes</th></tr>
-                    <tr><td colspan="4">
-                        Have you urinated? Have you drained your bladder? Are you free? Because if you haven't it will only come out later. 
-                        I'm giving you some information that your bodily fluids may penetrate your clothing fibre's without warning.Go with 
-                        the feeling of the nature. Take it easy. Know why you're here. And remember to balance your internal energy with the 
-                        environment.
-                    </td>
-                    </tr>
-                </tbody>
-                
-            </table>
+            <h4>Modal Header</h4>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum
+            </p>
         </div>
         <div class="modal-footer">
-            <button id="editButton" class="btn">edit</button>
-            <button id="cancelButton" class="btn-red">cancel</button>
+            <button id="cancelButton" class="btn-materialize">disAgree</button>
+            <button  class="btn-materialize">Agree</button>
         </div>
     </div>
-    <div class="modal-content">
-        <div class="modal-header">
-            <div class="info-box-2 bg-teal hover-expand-effect">
-                <div class="icon">
-                    <i class="material-symbols-outlined">cleaning_services</i>
-                </div>
-                <div class="content">
-                    <div class="customer-label">EMPLOYEE</div>
-                    <div class="customer-name">	Natália Vaca</div>
-                </div>
-            </div>
-        </div>
-        <div class="modal-body">
-            <table class="modal-table">
-                <tr><th>Place type</th><td>Hental House</td></tr>
-                <tr><th>Charge</th><td>price for Biweekly / R$200</td></tr>
-                <tr><th>Frequency</th><td>Biweekly</td></tr>
-                <tr><th>&nbsp;</th><td>&nbsp;</td></tr>
-                <tr><th colspan="2">Instruction</th></tr>
-                <tr>
-                    <td colspan="2">
-                        Have you urinated? Have you drained your bladder? Are you free? Because if you haven't it will only come out later. 
-                        I'm giving you some information that your bodily fluids may penetrate your clothing fibre's without warning.Go with 
-                        the feeling of the nature. Take it easy. Know why you're here. And remember to balance your internal energy with the 
-                        environment.
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="modal-footer">&nbsp;</div>
-    </div>
-
 </div>
+
 ```
 #### Open Modal Options
 
