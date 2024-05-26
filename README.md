@@ -2,6 +2,12 @@
 # OpenModal
 Open Modal is a pure Js module, which uses the [animate.css](https://animate.style/) library to create the modal effects.
 
+
+
+https://github.com/isaacangello/openModal/assets/13286180/8b2cc536-6f23-460c-9316-eadd6661cf2c
+
+
+
 ### install 
 
 ```bash
