@@ -21,7 +21,7 @@
                 <select id="select-effect">
                     <option value="">Effects</option>
                 </select>
-                <button id="SlEffect" class="btn btn-primary"> Selected Effect</button>
+                <button id="slEffect" class="btn btn-primary"> Selected Effect</button>
 
             </div>
     <hr>
@@ -157,15 +157,15 @@
     </div>
 </div>
 
-<div class="modal-modern" >
+<div class="modal-modern hide" >
     <div class="modal-dialog-modern">
         <div class="modal-content-modern">
             <div class="modal-header">
                 <h5 class="modal-title">Modal title</h5>
                 <button type="button" class="btn-up-close" data-bs-dismiss="modal" aria-label="Close">
-                                <span class="material-symbols-outlined">
-                                    close
-                                </span>
+                    <span class="material-symbols-outlined">
+                        close
+                    </span>
                 </button>
             </div>
             <div class="modal-body">
@@ -173,6 +173,27 @@
             </div>
             <div class="modal-footer">
                 <button type="button" id="ModernBtnClose" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal-selected hide" >
+    <div class="modal-dialog-selected">
+        <div class="modal-content-selected">
+            <div class="modal-header">
+                <h5 class="modal-title">Modal title</h5>
+                <button type="button" class="btn-selected-close" data-bs-dismiss="modal" aria-label="Close">
+                    <span class="material-symbols-outlined">
+                        close
+                    </span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>This is a moderm modal</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="selectedBtnClose" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
             </div>
         </div>
     </div>

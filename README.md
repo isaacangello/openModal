@@ -66,7 +66,7 @@ If you want to use the project's css, there is an open-modal css file in the sam
 It is possible to configure some options to change the way Open Modal works, the configurable options are passed to the class constructor 
 as a literal object
 
-### Exemple
+### Example
 ```js
 import OpenModal  from "./dist/open-modal.js"
 

@@ -42,7 +42,7 @@ class OpenModal{
         this.contentInEffects = contentInEffects
         this.contentOutEffects = contentOutEffects
 
-        console.info(this.containerOutEffects)
+         // console.info(this.contentInEffects+"--"+this.contentOutEffects)
     }
 
        removeAnimate(className,selectors){
@@ -89,7 +89,7 @@ class OpenModal{
 
     }
      addAnimate(className,selectors){
-        let result = false
+
         let items = document.getElementsByClassName(className)
         if(typeof(items.length) === "number" && items.length > 0  ){
             for (let i = 0; i < items.length; i++) {
@@ -101,11 +101,8 @@ class OpenModal{
                 })
                 }
             }
-        }else{
-            //return result
         }
-        //return items
-    }
+     }
 
     // this method inspired on function found in animate.style
     animateCSS  (elementClass, animation) {
@@ -132,7 +129,6 @@ class OpenModal{
         this.openModal.style.backgroundColor = this.containerBackground
     }
     this.showModal.addEventListener('click',() => {
-        let CancelEvent = false
         this.removeAnimate(this.containerClass, this.containerOutEffects)
         //console.info(this.contentOutEffects)
         this.removeAnimate(this.contentClass, this.contentOutEffects)
@@ -150,9 +146,6 @@ class OpenModal{
     })
             this.btnCancel.addEventListener('click',(e)=> {
                 e.preventDefault()
-            //console.info(openModal.classList.contains('hide'))
-                // console.info(`=====conainer ${this.contentInEffects} && content ${this.contentOutEffects}`)
-
                 this.removeAnimate(this.containerClass, this.containerInEffects)
                 this.removeAnimate(this.contentClass, this.contentInEffects)
 

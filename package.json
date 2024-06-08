@@ -1,6 +1,6 @@
 {
   "name": "open-modal",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "main": "dist/open-modal.js",
   "directories": {
     "lib": "lib",
@@ -14,11 +14,12 @@
     "url": "https://github.com/isaacangello/openModal.git"
   },
   "keywords": [
-    "OpenModal","openmoal","bootstrap modal","tailwindcss modal","modal",
+    "OpenModal","openmodal","bootstrap modal","tailwindcss modal","modal",
     "materializecss modal", "simle modal", "modern modal","open modal",
-    "open-modal","animete.css nodal"
+    "open-modal","animete.css modal"
   ],
   "author": "Isaac Castro",
   "license": "LGPL-2.1-or-later",
-  "description": "This is a simple modal, which uses animate.css as an effect and it is possible to change the transparent background color."
+  "description": "This is a simple modal, which uses animate.css as an effect and it is possible to change the transparent background color.",
+     "homepage": "https://openmodal.sourceforge.io/"
 }
