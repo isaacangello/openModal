@@ -1,6 +1,6 @@
 {
   "name": "open-modal",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "main": "dist/open-modal.js",
   "directories": {
     "lib": "lib",
@@ -14,8 +14,8 @@
     "url": "https://github.com/isaacangello/openModal.git"
   },
   "keywords": [
-    "OpenModal","openmodal","bootstrap modal","tailwindcss modal","modal",
-    "materializecss modal", "simle modal", "modern modal","open modal",
+    "React-modal","OpenModal","openmodal","bootstrap modal","tailwindcss modal","modal",
+    "materialize.css modal", "simle modal", "modern modal","open modal",
     "open-modal","animete.css modal"
   ],
   "author": "Isaac Castro",
