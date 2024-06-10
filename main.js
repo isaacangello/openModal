@@ -28,10 +28,6 @@ sL.addEventListener('change',function () {
                     containerClass:'modal-selected',
                     contentClass:'modal-dialog-selected',
                     containerBackground: "rgba(190,197,192,0.5)",
-                    containerEffects:{
-                        containerInEffects:['animate__animated','animate__fadeIn'],
-                        containerOutEffects:['animate__animated', 'animate__zoomOut',"animate__delay-2s","animate__slow"]
-                    },
                     contentEffects:{
                         contentInEffects: effectIn,
                         contentOutEffects: effectOut,

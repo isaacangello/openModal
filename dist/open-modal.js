@@ -17,6 +17,7 @@ class OpenModal{
             containerBackground = false,
             containerEffects = false,
             contentEffects = false,
+            timeOutHide = "3s",
         } = params
         // console.log(btnShowId)
         this.containerClass = containerClass
@@ -31,8 +32,11 @@ class OpenModal{
         this.backOutDown = ['animate__animated','animate__backOutDown','animate__faster']
         this.backOutLeft = ['animate__animated','animate__backOutLeft']
         this.backInDown = ['animate__animated','animate__backInDown']
+        this.stdContainerIn = ['opmStdContainerEffectIn']
+        this.stdContainerOut = ['opmStdContainerEffectOut']
+        this.timeOutHide = timeOutHide
 
-        let {containerInEffects = this.bounceInLeft,containerOutEffects = this.bounceOut} = containerEffects
+        let {containerInEffects = this.stdContainerIn,containerOutEffects = this.stdContainerOut} = containerEffects
         this.containerInEffects = containerInEffects
         this.containerOutEffects = containerOutEffects
 
@@ -96,7 +100,15 @@ class OpenModal{
                 if (selectors!== undefined){
                 selectors.forEach((el) => {
                     if (!items[i].classList.contains(el)) {
-                        items[i].classList.add(el)
+                        if (el === this.hideClass){
+                            setTimeout(function () {
+                                items[i].classList.add(el)
+                            },this.timeOutHide)
+                        }else{
+                            items[i].classList.add(el)
+                        }
+
+
                     }
                 })
                 }
@@ -113,10 +125,10 @@ class OpenModal{
             this.addAnimate(elementClass,animation)
             function handleAnimationEnd(event,elementClass,animation) {
                 event.stopPropagation();
-                OpenModal.removeAnimate(elementClass,animation)
+                //OpenModal.removeAnimate(elementClass,animation)
                 resolve('Animation ended');
             }
-
+            reject('Some error.')
             // When the animation ends, we clean the classes and resolve the Promise
 
             node.addEventListener('animationend', handleAnimationEnd, {once: true});
@@ -130,7 +142,6 @@ class OpenModal{
     }
     this.showModal.addEventListener('click',() => {
         this.removeAnimate(this.containerClass, this.containerOutEffects)
-        //console.info(this.contentOutEffects)
         this.removeAnimate(this.contentClass, this.contentOutEffects)
 
         this.addAnimate(this.containerClass, this.containerInEffects)
@@ -144,23 +155,28 @@ class OpenModal{
         }
 
     })
-            this.btnCancel.addEventListener('click',(e)=> {
-                e.preventDefault()
+            this.btnCancel.addEventListener('click',()=> {
+
                 this.removeAnimate(this.containerClass, this.containerInEffects)
                 this.removeAnimate(this.contentClass, this.contentInEffects)
 
                 //this.addAnimate(this.containerClass, this.containerOutEffects)
                 // this.addAnimate(this.contentClass, this.contentOutEffects)
-                this.animateCSS(this.containerClass,this.containerOutEffects).then(e=>{
-                        this.openModal.classList.add(this.hideClass)
-                    this.removeAnimate(this.containerClass, this.containerOutEffects)
-                    //console.info(this.contentOutEffects)
-
-                })
                 this.animateCSS(this.contentClass,this.contentOutEffects).then(e=>{
                     this.removeAnimate(this.contentClass, this.contentOutEffects)
                     }
                 )
+                console.info("aQUI ->"+this.containerOutEffects)
+                console.log(this.openModal)
+               this.animateCSS(this.containerClass,this.containerOutEffects).then(e=>{
+                    //this.removeAnimate(this.containerClass, this.containerOutEffects)
+                    console.info("animate button cancel")
+
+                })
+                this.openModal.addEventListener('animationend',e=>{
+                    this.addAnimate(this.contentClass,[`${this.hideClass}` ])
+                    this.addAnimate(this.containerClass,[`${this.hideClass}` ])
+                })
 
                 // console.info(typeof this.contentOutEffects[1])
                 //
