@@ -17,7 +17,8 @@ class OpenModal{
             containerBackground = false,
             containerEffects = false,
             contentEffects = false,
-            timeOutHide = "3s",
+            timeOutHide = "0.3s",
+            trigger = false,
         } = params
         // console.log(btnShowId)
         this.containerClass = containerClass
@@ -29,12 +30,14 @@ class OpenModal{
         this.btnCancel = document.querySelector("#"+btnCancelId)
         this.bounceInLeft = ['animate__animated','animate__bounceInLeft','animate__faster']
         this.bounceOut = ['animate__animated', 'animate__bounceOut']
-        this.backOutDown = ['animate__animated','animate__backOutDown','animate__faster']
+        this.backOutDown = ['animate__animated','animate__backOutDown',"animate__delay-1s",'animate__faster']
         this.backOutLeft = ['animate__animated','animate__backOutLeft']
         this.backInDown = ['animate__animated','animate__backInDown']
         this.stdContainerIn = ['opmStdContainerEffectIn']
-        this.stdContainerOut = ['opmStdContainerEffectOut']
+        this.stdContainerOut = ['animate__animated','animate__fadeOut', 'animate__delay-1s', this.hideClass]
         this.timeOutHide = timeOutHide
+        this.trigger = trigger
+
 
         let {containerInEffects = this.stdContainerIn,containerOutEffects = this.stdContainerOut} = containerEffects
         this.containerInEffects = containerInEffects
@@ -49,7 +52,7 @@ class OpenModal{
          // console.info(this.contentInEffects+"--"+this.contentOutEffects)
     }
 
-       removeAnimate(className,selectors){
+       removeAnimateByClass(className, selectors){
         //let result = false
         let items = document.getElementsByClassName(className)
         if(typeof(items.length) === "number" && items.length > 0  ) {
@@ -62,130 +65,120 @@ class OpenModal{
                         }
                     })
                 }
-
             }
-        }else{
-            //return result
         }
-
-        //return items
     }
-    static removeAnimate(className,selectors) {
+    removeAnimateByElements(items, selectors){
         //let result = false
-        let items = document.getElementsByClassName(className)
-        if(typeof(items.length) === "number" && items.length > 0  ) {
             for (let i = 0; i < items.length; i++) {
                 if(selectors!== undefined){
                     selectors.forEach((el) => {
                         if (items[i].classList.contains(el)) {
                             items[i].classList.remove(el)
+                            items[i].addEventListener('animationend', function (e) {
+                                 e.stopPropagation()
+                                this.classList.add(this.hideClass)
 
+                            })
                         }
                     })
                 }
-
             }
-            //console.info("pasou pelo teste")
-        }else{
-            //return result
-            //console.warn("Não passou pelo teste")
-        }
 
     }
-     addAnimate(className,selectors){
+
+     addAnimateByElements(items, selectors){
+
+            for (let i = 0; i < items.length; i++) {
+                if (selectors !== undefined){
+                    selectors.forEach((el) => {
+                        if(el !== undefined){
+                            if (!items[i].classList.contains(el)) {
+                                if (el === this.hideClass) {
+                                    setTimeout(function () {
+                                        items[i].classList.add(el)
+                                    }, this.timeOutHide)
+                                } else {
+                                    items[i].classList.add(el)
+                                }
+                            }
+                        }
+                    })
+                    }
+            }
+        }
+
+
+     addAnimateByClassName(className, selectors){
 
         let items = document.getElementsByClassName(className)
         if(typeof(items.length) === "number" && items.length > 0  ){
-            for (let i = 0; i < items.length; i++) {
-                if (selectors!== undefined){
-                selectors.forEach((el) => {
-                    if (!items[i].classList.contains(el)) {
-                        if (el === this.hideClass){
-                            setTimeout(function () {
-                                items[i].classList.add(el)
-                            },this.timeOutHide)
-                        }else{
-                            items[i].classList.add(el)
+            for (let j = 0; j < items.length ; j++) {
+                if (selectors !== undefined){
+                    selectors.forEach((el) => {
+                        if(el !== undefined){
+                            if (!items[j].classList.contains(el)) {
+                                if (el === this.hideClass){
+                                setTimeout(function () {
+                                    items[j].classList.add(el)
+                                    },this.timeOutHide)
+                                }else{
+                                items[j].classList.add(el)
+                                }
+                            }
                         }
-
-
-                    }
-                })
+                    })
                 }
             }
         }
-     }
 
-    // this method inspired on function found in animate.style
-    animateCSS  (elementClass, animation) {
-        // We create a Promise and return it
-        return new Promise((resolve, reject) => {
-            //const animationName = animation[1];
-            const node = document.querySelector("."+elementClass);
-            this.addAnimate(elementClass,animation)
-            function handleAnimationEnd(event,elementClass,animation) {
-                event.stopPropagation();
-                //OpenModal.removeAnimate(elementClass,animation)
-                resolve('Animation ended');
-            }
-            reject('Some error.')
-            // When the animation ends, we clean the classes and resolve the Promise
-
-            node.addEventListener('animationend', handleAnimationEnd, {once: true});
-        });
     }
 
-    init(){
+    init() {
 
-    if (this.containerBackground){
-        this.openModal.style.backgroundColor = this.containerBackground
-    }
-    this.showModal.addEventListener('click',() => {
-        this.removeAnimate(this.containerClass, this.containerOutEffects)
-        this.removeAnimate(this.contentClass, this.contentOutEffects)
-
-        this.addAnimate(this.containerClass, this.containerInEffects)
-        this.addAnimate(this.contentClass, this.contentInEffects)
-        console.log(this.openModal)
-        if (this.openModal.classList.contains(this.hideClass)) {
-            this.openModal.classList.remove(this.hideClass)
-
-        }else{
-
-        }
-
-    })
-            this.btnCancel.addEventListener('click',()=> {
-
-                this.removeAnimate(this.containerClass, this.containerInEffects)
-                this.removeAnimate(this.contentClass, this.contentInEffects)
-
-                //this.addAnimate(this.containerClass, this.containerOutEffects)
-                // this.addAnimate(this.contentClass, this.contentOutEffects)
-                this.animateCSS(this.contentClass,this.contentOutEffects).then(e=>{
-                    this.removeAnimate(this.contentClass, this.contentOutEffects)
+                if (this.containerBackground) {
+                    this.openModal.style.backgroundColor = this.containerBackground
+                }
+                this.showModal.addEventListener('click', () => {
+                    if (this.trigger) {
+                        this.trigger()
                     }
-                )
-                console.info("aQUI ->"+this.containerOutEffects)
-                console.log(this.openModal)
-               this.animateCSS(this.containerClass,this.containerOutEffects).then(e=>{
-                    //this.removeAnimate(this.containerClass, this.containerOutEffects)
-                    console.info("animate button cancel")
+                    this.removeAnimateByClass(this.containerClass, this.containerOutEffects)
+                    this.removeAnimateByClass(this.contentClass, this.contentOutEffects)
+
+                    this.addAnimateByClassName(this.containerClass, this.containerInEffects)
+                    this.addAnimateByClassName(this.contentClass, this.contentInEffects)
+                    //console.log(this.openModal)
+                    if (this.openModal.classList.contains(this.hideClass)) {
+                        this.openModal.classList.remove(this.hideClass)
+
+                    } else {
+
+                    }
 
                 })
-                this.openModal.addEventListener('animationend',e=>{
-                    this.addAnimate(this.contentClass,[`${this.hideClass}` ])
-                    this.addAnimate(this.containerClass,[`${this.hideClass}` ])
+                this.btnCancel.addEventListener('click', () => {
+                    // this.removeAnimateByClass(this.containerClass, this.containerInEffects)
+                    // this.removeAnimateByClass(this.contentClass, this.contentInEffects)
+                    // this.animateCSS(this.containerClass,this.containerOutEffects)
+                    // this.animateCSS(this.contentClass,this.contentOutEffects)
+                    /* testando saida*/
+                    let containerElements = document.getElementsByClassName(this.containerClass)
+                    let contentElements = document.getElementsByClassName(this.contentClass)
+
+                    this.removeAnimateByElements(contentElements, this.contentInEffects)
+                    this.addAnimateByClassName(this.contentClass, this.contentOutEffects)
+
+                    this.removeAnimateByElements(containerElements, this.containerInEffects)
+                    this.addAnimateByClassName(this.containerClass, this.containerOutEffects)
+
+
+
                 })
-
-                // console.info(typeof this.contentOutEffects[1])
-                //
-                // console.log(this.contentOutEffects[1])
-            })
-
+        }
     }
 
 
-}
+
 
 export  default OpenModal
