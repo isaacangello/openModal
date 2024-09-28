@@ -131,7 +131,28 @@ class OpenModal{
                 }
             }
         }
+    }
+    addAnimateByClassNameAndHide(className, selectors,hideClass){
 
+        let items = document.getElementsByClassName(className)
+        if(typeof(items.length) === "number" && items.length > 0  ){
+            for (let j = 0; j < items.length ; j++) {
+                if (selectors !== undefined){
+                    selectors.forEach((el) => {
+                        if(el !== undefined) {
+                            if (!items[j].classList.contains(el)) {
+                                    items[j].classList.add(el)
+                                    items[j].addEventListener('animationend',async function (event) {
+                                        await event.stopPropagation()
+                                        await this.classList.add(hideClass)
+                                    })
+                            }
+                        }
+
+                    })
+                }
+            }
+        }
     }
 
     init() {
@@ -170,7 +191,7 @@ class OpenModal{
                     this.addAnimateByClassName(this.contentClass, this.contentOutEffects)
 
                     this.removeAnimateByElements(containerElements, this.containerInEffects)
-                    this.addAnimateByClassName(this.containerClass, this.containerOutEffects)
+                    this.addAnimateByClassNameAndHide(this.containerClass, this.containerOutEffects,this.hideClass)
 
 
 
