@@ -1,0 +1,39 @@
+name: Deploy to SourceForge & npm
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      - name: Deploy via SFTP to SourceForge
+        env:
+          LFTP_PASSWORD: ${{ secrets.FTP_PASS }}
+        run: |
+          lftp <<EOF
+          set sftp:auto-confirm yes
+          set net:timeout 30
+          set net:max-retries 3
+          open -u ${{ secrets.FTP_USER }}, -p ${{ secrets.FTP_PORT }} sftp://${{ secrets.FTP_HOST }}
+          mirror -R --exclude ^\.git$ --exclude ^\.env$ --exclude ^\.github$ --exclude ^\.gitignore$ --verbose . ${{ secrets.FTP_PATH }}
+          quit
+          EOF
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

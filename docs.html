@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenModal — Documentation</title>
+  <meta name="description" content="OpenModal documentation: installation, configuration, API reference, and examples.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+</head>
+<body>
+  <header class="navbar">
+    <span class="logo">OpenModal</span>
+    <nav>
+      <a href="index.html" data-i18n="nav.demo">Demo</a>
+      <a href="#getting-started">Docs</a>
+      <a href="https://github.com/isaacangello/openModal" target="_blank" data-i18n="nav.github">GitHub</a>
+      <button class="lang-btn" onclick="toggleLang()">PT</button>
+    </nav>
+  </header>
+
+  <div class="docs-wrapper">
+    <nav class="docs-sidebar">
+      <ul>
+        <li><a href="#getting-started">Getting Started</a></li>
+        <li><a href="#installation">Installation</a></li>
+        <li><a href="#usage">Basic Usage</a></li>
+        <li><a href="#configuration">Configuration</a></li>
+        <li><a href="#api">API Reference</a></li>
+        <li><a href="#effects">Effects</a></li>
+        <li><a href="#examples">Examples</a></li>
+        <li><a href="#migration">Migration</a></li>
+      </ul>
+    </nav>
+
+    <main class="docs-content">
+
+      <h1>Documentation</h1>
+      <p>Everything you need to use OpenModal in your project.</p>
+
+      <section id="getting-started">
+        <h2>Getting Started</h2>
+        <p>OpenModal is a lightweight, framework-agnostic modal library built with vanilla ES6. It uses <a href="https://animate.style/" target="_blank">animate.css</a> for entry/exit animations and works with any CSS framework or custom styles.</p>
+      </section>
+
+      <section id="installation">
+        <h2>Installation</h2>
+
+        <h3>npm</h3>
+        <pre><code>npm install open-modal</code></pre>
+
+        <h3>CDN</h3>
+        <pre><code>&lt;link rel="stylesheet" href="dist/open-modal.css"&gt;
+&lt;script type="module"&gt;
+  import OpenModal from './dist/open-modal.js'
+&lt;/script&gt;</code></pre>
+
+        <h3>Peer Dependency</h3>
+        <p>OpenModal requires <a href="https://animate.style/" target="_blank">animate.css v4.x</a> for animations. Add it via CDN or npm:</p>
+        <pre><code>&lt;link rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"&gt;</code></pre>
+      </section>
+
+      <section id="usage">
+        <h2>Basic Usage</h2>
+
+        <h3>1. HTML structure</h3>
+        <p>You need a trigger button, a container div, and a content div:</p>
+        <pre><code>&lt;button id="showModal"&gt;Open Modal&lt;/button&gt;
+
+&lt;div class="open-modal hide"&gt;
+  &lt;div class="modal-content"&gt;
+    &lt;p&gt;Your content here&lt;/p&gt;
+    &lt;button id="cancelButton"&gt;Close&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+        <h3>2. JavaScript</h3>
+        <pre><code>import OpenModal from 'open-modal'
+
+const modal = new OpenModal()
+modal.init()</code></pre>
+
+        <p>In the example above, all options use their default values: the show button has id <code>showModal</code>, the close button has id <code>cancelButton</code>, the container uses class <code>open-modal</code>, and the content uses class <code>modal-content</code>.</p>
+      </section>
+
+      <section id="configuration">
+        <h2>Configuration</h2>
+        <p>All options are passed as an object to the constructor:</p>
+        <pre><code>const modal = new OpenModal({
+  btnShowId: 'myButton',
+  containerBackground: 'rgba(0,0,0,0.5)',
+  contentEffects: {
+    contentInEffects: 'animate__fadeInDown',
+    contentOutEffects: 'animate__fadeOutUp',
+  },
+})</code></pre>
+
+        <table class="effects-table">
+          <thead>
+            <tr>
+              <th>Option</th>
+              <th>Default</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><code>btnShowId</code></td><td><code>"showModal"</code></td><td>ID of the button that opens the modal</td></tr>
+            <tr><td><code>btnCancelId</code></td><td><code>"cancelButton"</code></td><td>ID of the button that closes the modal</td></tr>
+            <tr><td><code>containerClass</code></td><td><code>"open-modal"</code></td><td>CSS class of the modal backdrop container</td></tr>
+            <tr><td><code>contentClass</code></td><td><code>"modal-content"</code></td><td>CSS class of the modal content wrapper</td></tr>
+            <tr><td><code>hideClass</code></td><td><code>"hide"</code></td><td>Class that hides the modal (<code>display: none</code>)</td></tr>
+            <tr><td><code>containerBackground</code></td><td><code>false</code></td><td>Background color/opacity for the backdrop (e.g. <code>"rgba(0,0,0,0.5)"</code>)</td></tr>
+            <tr><td><code>containerEffects</code></td><td><code>false</code></td><td>Object with <code>containerInEffects</code> and <code>containerOutEffects</code></td></tr>
+            <tr><td><code>contentEffects</code></td><td><code>false</code></td><td>Object with <code>contentInEffects</code> and <code>contentOutEffects</code></td></tr>
+            <tr><td><code>effectPrefix</code></td><td><code>"animate__animated"</code></td><td>Base class for animate.css animations</td></tr>
+            <tr><td><code>trigger</code></td><td><code>false</code></td><td>Optional callback function called before opening</td></tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="api">
+        <h2>API Reference</h2>
+
+        <div class="api-method">
+          <h3><code>constructor(options)</code></h3>
+          <p>Creates a new OpenModal instance. See the <a href="#configuration">Configuration</a> section for all available options.</p>
+        </div>
+
+        <div class="api-method">
+          <h3><code>.init()</code></h3>
+          <p>Initializes the modal by registering click listeners on the show and cancel buttons. Call this once per instance.</p>
+        </div>
+
+        <div class="api-method">
+          <h3><code>.updateEffects(contentIn, contentOut)</code></h3>
+          <p>Changes the animation effects in real time without recreating the instance. Useful for dynamic effect switching.</p>
+          <pre><code>modal.updateEffects('animate__fadeIn', 'animate__fadeOut')</code></pre>
+        </div>
+
+        <div class="api-method">
+          <h3><code>.clearAnimateClasses(className)</code></h3>
+          <p>Removes all <code>animate__*</code> classes from elements matching the given CSS class. Used internally to reset animation state.</p>
+        </div>
+      </section>
+
+      <section id="effects">
+        <h2>Effects</h2>
+        <p>OpenModal ships with 17 animation pairs. Each pair defines both an entrance and an exit animation. You can mix and match any combination.</p>
+
+        <div id="docs-effects-table"></div>
+        <p>See the full interactive demo on the <a href="index.html#effects">Effects Explorer</a> page.</p>
+      </section>
+
+      <section id="examples">
+        <h2>Examples</h2>
+
+        <h3>Custom Effects</h3>
+        <pre><code>const modal = new OpenModal({
+  btnShowId: 'myBtn',
+  btnCancelId: 'myCloseBtn',
+  containerBackground: 'rgba(45, 106, 79, 0.4)',
+  containerEffects: {
+    containerInEffects: 'animate__fadeIn',
+    containerOutEffects: 'animate__fadeOut',
+  },
+  contentEffects: {
+    contentInEffects: 'animate__bounceInLeft',
+    contentOutEffects: 'animate__bounceOutRight',
+  },
+})
+modal.init()</code></pre>
+
+        <h3>With Bootstrap</h3>
+        <pre><code>const bsModal = new OpenModal({
+  btnShowId: 'bsBtn',
+  btnCancelId: 'bsClose',
+  containerClass: 'modal-backdrop',
+  contentClass: 'modal-dialog',
+  hideClass: 'd-none',
+})</code></pre>
+
+        <h3>Dynamic Effect Switching</h3>
+        <pre><code>// Create instance once
+const modal = new OpenModal({ ... })
+modal.init()
+
+// Switch effects dynamically
+document.querySelector('#effect-select').addEventListener('change', (e) => {
+  modal.updateEffects(
+    `animate__${e.target.value}In`,
+    `animate__${e.target.value}Out`
+  )
+})</code></pre>
+      </section>
+
+      <section id="migration">
+        <h2>Migration from v1.1.x</h2>
+        <p>Version 1.2.0 introduced several improvements and fixes:</p>
+        <ul>
+          <li><strong>Removed</strong> <code>initObject()</code> and <code>window.OPM</code> — no more shared global state</li>
+          <li><strong>Removed</strong> the implicit <code>init()</code> call inside the cancel handler — call <code>init()</code> only once</li>
+          <li><strong>Added</strong> <code>updateEffects()</code> — change animations in real time</li>
+          <li><strong>Added</strong> <code>clearAnimateClasses()</code> — reset animation state</li>
+          <li><strong>Animation classes</strong> — the <code>animate__animated</code> base class is no longer removed during transitions</li>
+        </ul>
+        <p>If you relied on <code>window.OPM</code> or re-called <code>init()</code> manually, update your code to use the new API.</p>
+      </section>
+
+    </main>
+  </div>
+
+  <footer class="footer">
+    <p>Licensed under LGPL-2.1 — Made by Isaac Castro</p>
+  </footer>
+
+  <script src="translations.js"></script>
+  <script src="docs.js"></script>
+</body>
+</html>

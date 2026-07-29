@@ -1,11 +1,6 @@
-/**
- *
- */
-class OpenModal{
-    /**
-     *  todos parametros serão recebitos no construtor da classe através de um objeto
-     * @param params
-     */
+class OpenModal {
+    static _instances = []
+
     constructor(params = {}){
         let {
             btnShowId = "showModal",
@@ -17,189 +12,157 @@ class OpenModal{
             containerBackground = false,
             containerEffects = false,
             contentEffects = false,
-            timeOutHide = "0.3s",
+            effectPrefix = 'animate__animated',
             trigger = false,
         } = params
-        // console.log(btnShowId)
+
         this.containerClass = containerClass
         this.contentClass = contentClass
         this.hideClass = hideClass
         this.openModal = document.querySelector('.'+containerClass)
-        this.showModal = document.querySelector("#"+btnShowId)//
+        this.showModal = document.querySelector("#"+btnShowId)
         this.btnEdit = document.querySelector("#"+btnEditId)
         this.btnCancel = document.querySelector("#"+btnCancelId)
-        this.bounceInLeft = ['animate__animated','animate__bounceInLeft','animate__faster']
-        this.bounceOut = ['animate__animated', 'animate__bounceOut']
-        this.backOutDown = ['animate__animated','animate__backOutDown',"animate__delay-1s",'animate__faster']
-        this.backOutLeft = ['animate__animated','animate__backOutLeft']
-        this.backInDown = ['animate__animated','animate__backInDown']
-        this.stdContainerIn = ['opmStdContainerEffectIn']
-        this.stdContainerOut = ['animate__animated','animate__fadeOut', 'animate__delay-1s', this.hideClass]
-        this.timeOutHide = timeOutHide
+        this.bounceInLeft = 'animate__bounceInLeft'
+        this.bounceOut = 'animate__bounceOut'
+        this.backOutDown = 'animate__backOutDown'
+        this.backOutLeft = 'animate__backOutLeft'
+        this.backInDown = 'animate__backInDown'
+        this.stdContainerIn = 'animate__fadeIn'
+        this.stdContainerOut = 'animate__fadeOut'
+        this.effectPrefix = effectPrefix
         this.trigger = trigger
-
 
         let {containerInEffects = this.stdContainerIn,containerOutEffects = this.stdContainerOut} = containerEffects
         this.containerInEffects = containerInEffects
         this.containerOutEffects = containerOutEffects
-
         this.containerBackground = containerBackground
 
         let {contentInEffects = this.backInDown,contentOutEffects = this.bounceOut } = contentEffects
         this.contentInEffects = contentInEffects
         this.contentOutEffects = contentOutEffects
 
-         // console.info(this.contentInEffects+"--"+this.contentOutEffects)
+        this._boundShow = this._show.bind(this)
+        this._boundCancel = this._cancel.bind(this)
+        this._boundKeydown = this._onKeydown.bind(this)
+        this._boundBackdrop = this._onBackdropClick.bind(this)
     }
 
-       removeAnimateByClass(className, selectors){
-        //let result = false
-        let items = document.getElementsByClassName(className)
-        if(typeof(items.length) === "number" && items.length > 0  ) {
-            for (let i = 0; i < items.length; i++) {
-                if(selectors!== undefined){
-                    selectors.forEach((el) => {
-                        if (items[i].classList.contains(el)) {
-                            items[i].classList.remove(el)
-
-                        }
-                    })
-                }
+    static _closeOthers(instance) {
+        OpenModal._instances.forEach(inst => {
+            if (inst !== instance && !inst.openModal.classList.contains(inst.hideClass)) {
+                inst._cancel()
             }
-        }
-    }
-    removeAnimateByElements(items, selectors){
-        //let result = false
-            for (let i = 0; i < items.length; i++) {
-                if(selectors!== undefined){
-                    selectors.forEach((el) => {
-                        if (items[i].classList.contains(el)) {
-                            items[i].classList.remove(el)
-                            items[i].addEventListener('animationend', function (e) {
-                                 e.stopPropagation()
-                                this.classList.add(this.hideClass)
-
-                            })
-                        }
-                    })
-                }
-            }
-
+        })
     }
 
-     addAnimateByElements(items, selectors){
+    _show() {
+        OpenModal._closeOthers(this)
+        if (this.trigger) {
+            this.trigger()
+        }
+        this.clearAnimateClasses(this.containerClass)
+        this.clearAnimateClasses(this.contentClass)
+        this.addAnimateByClassName(this.containerClass, this.containerInEffects)
+        this.addAnimateByClassName(this.contentClass, this.contentInEffects)
 
-            for (let i = 0; i < items.length; i++) {
-                if (selectors !== undefined){
-                    selectors.forEach((el) => {
-                        if(el !== undefined){
-                            if (!items[i].classList.contains(el)) {
-                                if (el === this.hideClass) {
-                                    setTimeout(function () {
-                                        items[i].classList.add(el)
-                                    }, this.timeOutHide)
-                                } else {
-                                    items[i].classList.add(el)
-                                }
-                            }
-                        }
-                    })
-                    }
-            }
+        if (this.openModal.classList.contains(this.hideClass)) {
+            this.openModal.classList.remove(this.hideClass)
         }
 
+        document.body.style.overflow = 'hidden'
+    }
 
-     addAnimateByClassName(className, selectors){
+    _cancel() {
+        this.clearAnimateClasses(this.containerClass)
+        this.clearAnimateClasses(this.contentClass)
+        this.addAnimateByClassName(this.containerClass, this.containerOutEffects)
+        this.addAnimateByClassNameAndHide(this.contentClass, this.contentOutEffects, this.hideClass)
+    }
 
-        let items = document.getElementsByClassName(className)
-        if(typeof(items.length) === "number" && items.length > 0  ){
-            for (let j = 0; j < items.length ; j++) {
-                if (selectors !== undefined){
-                    selectors.forEach((el) => {
-                        if(el !== undefined){
-                            if (!items[j].classList.contains(el)) {
-                                if (el === this.hideClass){
-                                setTimeout(function () {
-                                    items[j].classList.add(el)
-                                    },this.timeOutHide)
-                                }else{
-                                items[j].classList.add(el)
-                                }
-                            }
-                        }
-                    })
-                }
-            }
+    _onKeydown(e) {
+        if (e.key === 'Escape' && !this.openModal.classList.contains(this.hideClass)) {
+            this._cancel()
         }
     }
-    addAnimateByClassNameAndHide(className, selectors,hideClass){
 
-        let items = document.getElementsByClassName(className)
-        if(typeof(items.length) === "number" && items.length > 0  ){
-            for (let j = 0; j < items.length ; j++) {
-                if (selectors !== undefined){
-                    selectors.forEach((el) => {
-                        if(el !== undefined) {
-                            if (!items[j].classList.contains(el)) {
-                                    items[j].classList.add(el)
-                                    items[j].addEventListener('animationend',async function (event) {
-                                        await event.stopPropagation()
-                                        await this.classList.add(hideClass)
-                                    })
-                            }
-                        }
-
-                    })
-                }
-            }
+    _onBackdropClick(e) {
+        if (e.target === this.openModal) {
+            this._cancel()
         }
+    }
+
+    updateEffects(contentInEffects, contentOutEffects){
+        this.contentInEffects = contentInEffects
+        this.contentOutEffects = contentOutEffects
+    }
+
+    clearAnimateClasses(className){
+        let items = this.openModal.querySelectorAll("."+className)
+        items.forEach(element => {
+            let classes = Array.from(element.classList)
+            classes.forEach(cls => {
+                if (cls.startsWith('animate__')) {
+                    element.classList.remove(cls)
+                }
+            })
+        })
+    }
+
+    addAnimateByClassName(className, selector){
+        let items = this.openModal.querySelectorAll("."+className)
+        items.forEach(function (element) {
+            if(!element.classList.contains(this.effectPrefix)){
+                element.classList.add(this.effectPrefix)
+            }
+            if(!element.classList.contains(selector)){
+                element.classList.add(selector)
+            }
+        }, this)
+    }
+
+    addAnimateByClassNameAndHide(className, selector, hideClass){
+        if(hideClass === undefined){hideClass = this.hideClass}
+        let items = this.openModal.querySelectorAll("."+className)
+        items.forEach(element => {
+            element.classList.add(this.effectPrefix)
+            element.classList.add(selector)
+            element.addEventListener('animationend', event => {
+                event.stopPropagation()
+                this.openModal.classList.add(hideClass)
+                document.body.style.overflow = ''
+            }, { once: true })
+        })
     }
 
     init() {
-
-                if (this.containerBackground) {
-                    this.openModal.style.backgroundColor = this.containerBackground
-                }
-                this.showModal.addEventListener('click', () => {
-                    if (this.trigger) {
-                        this.trigger()
-                    }
-                    this.removeAnimateByClass(this.containerClass, this.containerOutEffects)
-                    this.removeAnimateByClass(this.contentClass, this.contentOutEffects)
-
-                    this.addAnimateByClassName(this.containerClass, this.containerInEffects)
-                    this.addAnimateByClassName(this.contentClass, this.contentInEffects)
-                    //console.log(this.openModal)
-                    if (this.openModal.classList.contains(this.hideClass)) {
-                        this.openModal.classList.remove(this.hideClass)
-
-                    } else {
-
-                    }
-
-                })
-                this.btnCancel.addEventListener('click', () => {
-                    // this.removeAnimateByClass(this.containerClass, this.containerInEffects)
-                    // this.removeAnimateByClass(this.contentClass, this.contentInEffects)
-                    // this.animateCSS(this.containerClass,this.containerOutEffects)
-                    // this.animateCSS(this.contentClass,this.contentOutEffects)
-                    /* testando saida*/
-                    let containerElements = document.getElementsByClassName(this.containerClass)
-                    let contentElements = document.getElementsByClassName(this.contentClass)
-
-                    this.removeAnimateByElements(contentElements, this.contentInEffects)
-                    this.addAnimateByClassName(this.contentClass, this.contentOutEffects)
-
-                    this.removeAnimateByElements(containerElements, this.containerInEffects)
-                    this.addAnimateByClassNameAndHide(this.containerClass, this.containerOutEffects,this.hideClass)
-
-
-
-                })
+        if (this.containerBackground) {
+            this.openModal.style.backgroundColor = this.containerBackground
         }
+
+        if (!OpenModal._instances.includes(this)) {
+            OpenModal._instances.push(this)
+        }
+
+        this.showModal.addEventListener('click', this._boundShow)
+        this.btnCancel.addEventListener('click', this._boundCancel)
+        document.addEventListener('keydown', this._boundKeydown)
+        this.openModal.addEventListener('click', this._boundBackdrop)
     }
 
+    close() {
+        this._cancel()
+    }
 
+    destroy() {
+        this.showModal.removeEventListener('click', this._boundShow)
+        this.btnCancel.removeEventListener('click', this._boundCancel)
+        document.removeEventListener('keydown', this._boundKeydown)
+        this.openModal.removeEventListener('click', this._boundBackdrop)
+        this.openModal = null
+        this.showModal = null
+        this.btnCancel = null
+    }
+}
 
-
-export  default OpenModal
+export default OpenModal
