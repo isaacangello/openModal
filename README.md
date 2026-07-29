@@ -35,9 +35,9 @@ npm install open-modal
 
 ## Documentation
 
-Full documentation with configuration reference, API guide, and examples: **[docs.html](docs.html)**
+Full documentation with configuration reference, API guide, and examples: **[openmodal.sourceforge.io/docs.html](https://openmodal.sourceforge.io/docs.html)**
 
-Live demo with interactive effects explorer: **[index.html](index.html)**
+Live demo with interactive effects explorer: **[openmodal.sourceforge.io](https://openmodal.sourceforge.io/)**
 
 ## Options
 
