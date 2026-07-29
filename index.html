@@ -1,209 +1,269 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Open Modal</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenModal — Lightweight Modal Library</title>
+  <meta name="description" content="OpenModal is a lightweight, framework-agnostic modal library powered by animate.css animations.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dist/open-modal.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <link rel="stylesheet" href="lib/node-waves/dist/waves.min.css">
 </head>
-<link rel="stylesheet" href="style.css">
-<link rel="stylesheet" href="dist/open-modal.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,300,0,0" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-<link rel="stylesheet" href="lib/node-waves/dist/waves.min.css"/>
-<body class="style_body">
-<div class="container-all">
-            <div>
-                <h1>Open Modal </h1>
-                <button id="StdModal" class="btn btn-secondary">Modern Modal</button>
-            </div>
-    <hr>
-            <div>
-                <label for="select-effect">Select one effect</label>
-                <select id="select-effect">
-                    <option value="">Effects</option>
-                </select>
-                <button id="slEffect" class="btn btn-primary"> Selected Effect</button>
+<body>
+  <!-- Navbar -->
+  <header class="navbar">
+    <span class="logo">OpenModal</span>
+    <nav>
+      <a href="#demos" data-i18n="nav.demo">Demo</a>
+      <a href="docs.html" data-i18n="nav.docs">Docs</a>
+      <a href="https://github.com/isaacangello/openModal" target="_blank" data-i18n="nav.github">GitHub</a>
+      <button class="lang-btn" onclick="toggleLang()">PT</button>
+    </nav>
+  </header>
 
-            </div>
-    <hr>
-            <div>
-                <h2>
-                    Modal which two windows
-                </h2>
-                <button id="botaoMostrar" class="btn btn-success"> show modal</button>
-            </div>
-
-            <hr>
-    <div>
-        <h2>
-            similar bootstrap Modal
-        </h2>
+  <!-- Hero -->
+  <section class="hero">
+    <h1>OpenModal</h1>
+    <p data-i18n="hero.subtitle">A lightweight, framework-agnostic modal library powered by animate.css</p>
+    <div class="hero-buttons">
+      <a href="#demos" class="btn btn-primary" data-i18n="hero.btnDemo">Try Demos</a>
+      <a href="docs.html" class="btn btn-outline" data-i18n="hero.btnDocs">Read Docs</a>
+      <a href="https://github.com/isaacangello/openModal" target="_blank" class="btn btn-ghost" data-i18n="hero.btnGithub">View on GitHub</a>
     </div>
+  </section>
 
-    <button id="bsShowModal" class="btn btn-primary">Bootstrap Modal</button>
-    <hr>
-    <div>
-        <h2>
-            similar Materialize.css Modal
-        </h2>
+  <!-- Features -->
+  <section class="section" id="features">
+    <h2 class="section-title" data-i18n="features.title">Features</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <h3 data-i18n="features.zeroDeps.title">Zero Dependencies</h3>
+        <p data-i18n="features.zeroDeps.desc">Pure ES6 class with no runtime dependencies. Just you, animate.css, and your markup.</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-i18n="features.agnostic.title">Framework-Agnostic</h3>
+        <p data-i18n="features.agnostic.desc">Works with Bootstrap, Materialize, Tailwind CSS, or your own custom styles.</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-i18n="features.animations.title">17 Animation Pairs</h3>
+        <p data-i18n="features.animations.desc">Separate entry and exit animations for both backdrop and content. Mix and match freely.</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-i18n="features.config.title">Fully Configurable</h3>
+        <p data-i18n="features.config.desc">Customize IDs, classes, colors, effects, and triggers via a simple options object.</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-i18n="features.module.title">ES6 Module</h3>
+        <p data-i18n="features.module.desc">Import as a standard ES6 module. Works with Webpack, Vite, Rollup, or directly in the browser.</p>
+      </div>
+      <div class="feature-card">
+        <h3 data-i18n="features.ripple.title">Material Ripple</h3>
+        <p data-i18n="features.ripple.desc">Optional click ripple effect using the vendored node-waves library.</p>
+      </div>
     </div>
+  </section>
 
-    <button id="mtShowModal" class="btn-materialize teal">Materialize Modal</button>
-    <!-- Modal materialize -->
-    <div id="modal1" class="modal-materialize hide">
-        <div class="modal-content-mt">
-                <div class="modal-body">
-                    <h4>Modal Header</h4>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                        ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                        sunt in culpa qui officia deserunt mollit anim id est laborum
-                    </p>
-                </div>
-                <div class="modal-footer">
-                    <button id="btn-close" class="btn-materialize">disAgree</button>
-                    <button  class="btn-materialize">Agree</button>
-                </div>
+  <!-- Demos -->
+  <section class="section" id="demos">
+    <h2 class="section-title" data-i18n="demos.title">Live Demos</h2>
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3 data-i18n="demos.standard.title">Standard Modal</h3>
+        <p data-i18n="demos.standard.desc">Data entry form with customer details table. Uses bounceInUp/bounceOutUp effects.</p>
+        <button id="botaoMostrar" class="btn-green" data-i18n="demos.standard.title">Standard Modal</button>
+      </div>
+      <div class="demo-card">
+        <h3 data-i18n="demos.bootstrap.title">Bootstrap Style</h3>
+        <p data-i18n="demos.bootstrap.desc">Familiar Bootstrap-like dialog with fadeInDown/fadeOutUp effects.</p>
+        <button id="bsShowModal" class="btn-primary" data-i18n="demos.bootstrap.title">Bootstrap Style</button>
+      </div>
+      <div class="demo-card">
+        <h3 data-i18n="demos.materialize.title">Materialize Style</h3>
+        <p data-i18n="demos.materialize.desc">Material Design inspired modal with zoomIn/zoomOut effects.</p>
+        <button id="mtShowModal" class="btn-materialize teal" data-i18n="demos.materialize.title">Materialize Style</button>
+      </div>
+      <div class="demo-card">
+        <h3 data-i18n="demos.modern.title">Modern Style</h3>
+        <p data-i18n="demos.modern.desc">Sleek modern dialog with jackInTheBox/hinge effects.</p>
+        <button id="StdModal" class="btn-secondary" data-i18n="demos.modern.title">Modern Style</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Effects Explorer -->
+  <section class="section" id="effects">
+    <h2 class="section-title" data-i18n="effects.title">Animation Effects</h2>
+    <p style="text-align:center;color:#6c757d;margin-bottom:2rem" data-i18n="effects.subtitle">Click Preview to test any effect on the modal below</p>
+
+    <div class="effects-card">
+      <div class="effects-card-left">
+        <select id="select-effect">
+          <option value="" data-i18n="effects.select">Choose an effect...</option>
+        </select>
+      </div>
+      <div class="effects-card-right">
+        <div class="effects-info-content">
+          <div class="effect-label" id="effect-label">—</div>
+          <div class="effect-classes" id="effect-classes"></div>
         </div>
+        <button id="slEffect" class="btn btn-outline" data-i18n="effects.preview">Preview</button>
+      </div>
     </div>
-</div>
-<!-- modal standard-->
-<div class="open-modal hide">
+
+    <table class="effects-table">
+      <thead>
+        <tr>
+          <th data-i18n="effects.category_label">Category</th>
+          <th data-i18n="effects.name_label">Effect</th>
+          <th class="hide-mobile" data-i18n="effects.description_label">Description</th>
+          <th>In / Out</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody id="effects-tbody"></tbody>
+    </table>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>
+      <span data-i18n="footer.license">Licensed under LGPL-2.1</span>
+      — <span data-i18n="footer.madeBy">Made by Isaac Castro</span>
+    </p>
+  </footer>
+
+  <!-- Modal: Standard -->
+  <div class="open-modal hide">
     <div class="modal-content">
+      <div class="modal-header">
+        <div class="info-box-2 bg-teal hover-expand-effect">
+          <div class="icon"><i class="material-symbols-outlined">cleaning_services</i></div>
+          <div class="content">
+            <div class="customer-label">CUSTOMER</div>
+            <div class="customer-name">Ishdeep Singh</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <table class="modal-table">
+          <tbody>
+            <tr><th>Address</th><td colspan="3"><input type="text" value="9044 NW 28 Dr Apt 304 Coral Springs FL"></td></tr>
+            <tr><th>Phone</th><td colspan="3">4126800610</td></tr>
+            <tr><th>Date:</th><td>05/20/2024</td><th>Time</th><td>12:00 PM</td></tr>
+            <tr><th>In:</th><td>12:33 PM</td><th>Out</th><td>16:16 PM</td></tr>
+            <tr><th colspan="4">notes</th></tr>
+            <tr><td colspan="4">Have you urinated? Have you drained your bladder? Are you free? Because if you haven't it will only come out later.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button id="editButton" class="btn-green">edit</button>
+        <button id="cancelButton" class="btn-red">cancel</button>
+      </div>
+    </div>
+    <div class="modal-content">
+      <div class="modal-header">
+        <div class="info-box-2 bg-teal hover-expand-effect">
+          <div class="icon"><i class="material-symbols-outlined">cleaning_services</i></div>
+          <div class="content">
+            <div class="customer-label">EMPLOYEE</div>
+            <div class="customer-name">Natália Vaca</div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body">
+        <table class="modal-table">
+          <tr><th>Place type</th><td>Hental House</td></tr>
+          <tr><th>Charge</th><td>price for Biweekly / R$200</td></tr>
+          <tr><th>Frequency</th><td>Biweekly</td></tr>
+          <tr><th colspan="2">Instruction</th></tr>
+          <tr><td colspan="2">Have you urinated? Have you drained your bladder? Are you free?</td></tr>
+        </table>
+      </div>
+      <div class="modal-footer">&nbsp;</div>
+    </div>
+  </div>
+
+  <!-- Modal: Bootstrap -->
+  <div class="modal-bootstrap hide">
+    <div class="modal-dialog">
+      <div class="modal-content">
         <div class="modal-header">
-            <div class="info-box-2 bg-teal hover-expand-effect">
-                <div class="icon">
-                    <i class="material-symbols-outlined">cleaning_services</i>
-                </div>
-                <div class="content">
-                    <div class="customer-label">CUSTOMER</div>
-                    <div class="customer-name">Ishdeep Singh</div>
-                </div>
-            </div>
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="btn-up-close" aria-label="Close">
+            <span class="material-symbols-outlined">close</span>
+          </button>
         </div>
         <div class="modal-body">
-            <table class="modal-table">
-                <tbody>
-                <tr><th colspan="1">Address</th><td colspan="3"><input type="text" value="9044 NW 28 Dr Apt 304 Coral Springs FL" /></td></tr>
-                <tr><th colspan="1">Phone</th><td colspan="3">4126800610</td></tr>
-                <tr><th>Date:</th><td>05/20/2024</td><th >Time</th><td>12:00 PM</td></tr>
-                <tr><th>In:</th><td>12:33 PM</td><th >Out</th><td>16:16 PM</td></tr>
-                <tr><th colspan="4">notes</th></tr>
-                <tr><td colspan="4">
-                    Have you urinated? Have you drained your bladder? Are you free? Because if you haven't it will only come out later. I'm giving you some information that your bodily fluids may penetrate your clothing fibre's without warning.Go with the feeling of the nature. Take it easy. Know why you're here. And remember to balance your internal energy with the environment.
-                </td>
-                </tr>
-                </tbody>
-
-            </table>
+          <p>Modal body text goes here.</p>
         </div>
         <div class="modal-footer">
-            <button id="editButton" class="btn-green">edit</button>
-            <button id="cancelButton" class="btn-red">cancel</button>
+          <button type="button" id="bsBtnClose" class="btn btn-secondary">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
+      </div>
     </div>
+  </div>
 
-    <div class="modal-content">
-        <div class="modal-header">
-            <div class="info-box-2 bg-teal hover-expand-effect">
-                <div class="icon">
-                    <i class="material-symbols-outlined">cleaning_services</i>
-                </div>
-                <div class="content">
-                    <div class="customer-label">EMPLOYEE</div>
-                    <div class="customer-name">	Natália Vaca</div>
-                </div>
-            </div>
-        </div>
-        <div class="modal-body">
-            <table class="modal-table">
-                <tr><th>Place type</th><td>Hental House</td></tr>
-                <tr><th>Charge</th><td>price for Biweekly / R$200</td></tr>
-                <tr><th>Frequency</th><td>Biweekly</td></tr>
-                <tr><th>&nbsp;</th><td>&nbsp;</td></tr>
-                <tr><th colspan="2">Instruction</th></tr>
-                <tr>
-                    <td colspan="2">
-                        Have you urinated? Have you drained your bladder? Are you free? Because if you haven't it will only come out later. I'm giving you some information that your bodily fluids may penetrate your clothing fibre's without warning.Go with the feeling of the nature. Take it easy. Know why you're here. And remember to balance your internal energy with the environment.
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div class="modal-footer">&nbsp;</div>
+  <!-- Modal: Materialize -->
+  <div id="modal1" class="modal-materialize hide">
+    <div class="modal-content-mt">
+      <div class="modal-body">
+        <h4>Modal Header</h4>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-close" class="btn-materialize">disAgree</button>
+        <button class="btn-materialize">Agree</button>
+      </div>
     </div>
+  </div>
 
-</div>
-<!-- Modal Bootstrap -->
-<div class="modal-bootstrap hide" >
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="btn-up-close" data-bs-dismiss="modal" aria-label="Close">
-                                <span class="material-symbols-outlined">
-                                    close
-                                </span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Modal body text goes here.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" id="bsBtnClose" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="modal-modern hide" >
+  <!-- Modal: Modern -->
+  <div class="modal-modern hide">
     <div class="modal-dialog-modern">
-        <div class="modal-content-modern">
-            <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="btn-up-close" data-bs-dismiss="modal" aria-label="Close">
-                    <span class="material-symbols-outlined">
-                        close
-                    </span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>This is a moderm modal</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" id="ModernBtnClose" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
+      <div class="modal-content-modern">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="btn-up-close" aria-label="Close">
+            <span class="material-symbols-outlined">close</span>
+          </button>
         </div>
+        <div class="modal-body"><p>This is a modern modal</p></div>
+        <div class="modal-footer">
+          <button type="button" id="ModernBtnClose" class="btn btn-secondary">Close</button>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 
-<div class="modal-selected hide" >
+  <!-- Modal: Effects Explorer -->
+  <div class="modal-selected hide">
     <div class="modal-dialog-selected">
-        <div class="modal-content-selected">
-            <div class="modal-header">
-                <h5 class="modal-title">Modal title</h5>
-                <button type="button" class="btn-selected-close" data-bs-dismiss="modal" aria-label="Close">
-                    <span class="material-symbols-outlined">
-                        close
-                    </span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>This is a moderm modal</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" id="selectedBtnClose" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            </div>
+      <div class="modal-content-selected">
+        <div class="modal-header">
+          <h5 class="modal-title" data-i18n="effects.title">Animation Effects</h5>
+          <button type="button" class="btn-selected-close" aria-label="Close">
+            <span class="material-symbols-outlined">close</span>
+          </button>
         </div>
+        <div class="modal-body"><p>Preview: <span id="preview-effect-name">—</span></p></div>
+        <div class="modal-footer">
+          <button type="button" id="selectedBtnClose" class="btn btn-secondary">Close</button>
+        </div>
+      </div>
     </div>
-</div>
+  </div>
 
-<script src="lib/node-waves/dist/waves.min.js"></script>
-<script src="main.js" type="module"></script>
-<script type="text/javascript">
-    Waves.attach('.btn-materialize',['waves-effect','waves-teal']);
-    Waves.init();
-</script>
+  <script src="lib/node-waves/dist/waves.min.js"></script>
+  <script src="translations.js"></script>
+  <script type="module" src="main.js"></script>
+  <script>
+    Waves.attach('.btn-materialize', ['waves-effect', 'waves-teal'])
+    Waves.init()
+  </script>
 </body>
 </html>

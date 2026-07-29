@@ -1,0 +1,37 @@
+name: Deploy to SourceForge & npm
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
+
+      - name: Deploy via rsync over SSH to SourceForge
+        env:
+          SSHPASS: ${{ secrets.FTP_PASS }}
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p ${{ secrets.FTP_PORT }} ${{ secrets.FTP_HOST }} >> ~/.ssh/known_hosts 2>/dev/null
+          sshpass -e rsync -avz --delete \
+            --exclude '.git' --exclude '.env' --exclude '.github' --exclude '.gitignore' \
+            -e "ssh -p ${{ secrets.FTP_PORT }} -o StrictHostKeyChecking=no" \
+            ./ ${{ secrets.FTP_USER }}@${{ secrets.FTP_HOST }}:${{ secrets.FTP_PATH }}
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Publish to npm
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

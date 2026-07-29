@@ -1,18 +1,114 @@
 {
-  "backInDown": {"effectIn":["animate__animated", "animate__backInDown"],"effectOut":["animate__animated", "animate__backOutUp"]},
-  "backInLeft": {"effectIn":["animate__animated", "animate__backInLeft"],"effectOut":["animate__animated", "animate__backOutLeft"]},
-  "backInRight": {"effectIn":["animate__animated", "animate__backInRight"],"effectOut":["animate__animated", "animate__backOutRight"]},
-  "backInUp": {"effectIn":["animate__animated", "animate__backInUp"],"effectOut":["animate__animated", "animate__backOutDown"]},
-  "Bounce": {"effectIn":["animate__animated", "animate__bounce"],"effectOut":["animate__animated", "animate__backOutDown"]},
-  "bounceIn": {"effectIn":["animate__animated", "animate__bounceIn"],"effectOut":["animate__animated", "animate__bounceOut"]},
-  "bounceInDown": {"effectIn":["animate__animated", "animate__bounceInDown"],"effectOut":["animate__animated", "animate__bounceOutUp"]},
-  "bounceInLeft": {"effectIn":["animate__animated", "animate__bounceInLeft"],"effectOut":["animate__animated", "animate__bounceOutLeft"]},
-  "bounceInRight": {"effectIn":["animate__animated", "animate__bounceInRight"],"effectOut":["animate__animated", "animate__bounceOutRight"]},
-  "bounceInUp": {"effectIn":["animate__animated", "animate__bounceInUp"],"effectOut":["animate__animated", "animate__bounceOutDown"]},
-  "fadeIn": {"effectIn":["animate__animated", "animate__fadeIn"],"effectOut":["animate__animated", "animate__fadeOut"]},
-  "fadeInDown": {"effectIn":["animate__animated", "animate__fadeInDown"],"effectOut":["animate__animated", "animate__fadeOutUp"]},
-  "fadeInLeft": {"effectIn":["animate__animated", "animate__fadeInLeft"],"effectOut":["animate__animated", "animate__fadeOutLeft"]},
-  "fadeInRight": {"effectIn":["animate__animated", "animate__fadeInRight"],"effectOut":["animate__animated", "animate__fadeOutRight"]},
-  "fadeInUp": {"effectIn":["animate__animated", "animate__fadeInUp"],"effectOut":["animate__animated", "animate__fadeOutDown"]},
-  "hingeOut": {"effectIn":["animate__animated", "animate__jackInTheBox"],"effectOut":["animate__animated", "animate__hinge"]}
+  "backInDown": {
+    "effectIn": "animate__backInDown",
+    "effectOut": "animate__backOutUp",
+    "category": "back",
+    "label": { "en": "Back In Down", "pt": "Entrada Recuada Superior" },
+    "description": { "en": "Element drops in from the top with an overshoot bounce", "pt": "Elemento cai do topo com um recuo elástico" }
+  },
+  "backInLeft": {
+    "effectIn": "animate__backInLeft",
+    "effectOut": "animate__backOutLeft",
+    "category": "back",
+    "label": { "en": "Back In Left", "pt": "Entrada Recuada Esquerda" },
+    "description": { "en": "Element slides in from the left with an overshoot bounce", "pt": "Elemento desliza da esquerda com recuo elástico" }
+  },
+  "backInRight": {
+    "effectIn": "animate__backInRight",
+    "effectOut": "animate__backOutRight",
+    "category": "back",
+    "label": { "en": "Back In Right", "pt": "Entrada Recuada Direita" },
+    "description": { "en": "Element slides in from the right with an overshoot bounce", "pt": "Elemento desliza da direita com recuo elástico" }
+  },
+  "backInUp": {
+    "effectIn": "animate__backInUp",
+    "effectOut": "animate__backOutDown",
+    "category": "back",
+    "label": { "en": "Back In Up", "pt": "Entrada Recuada Inferior" },
+    "description": { "en": "Element rises from the bottom with an overshoot bounce", "pt": "Elemento sobe do fundo com recuo elástico" }
+  },
+  "Bounce": {
+    "effectIn": "animate__bounce",
+    "effectOut": "animate__backOutDown",
+    "category": "bounce",
+    "label": { "en": "Bounce", "pt": "Quicar" },
+    "description": { "en": "Element bounces in place like a rubber ball", "pt": "Elemento quica no lugar como uma bola de borracha" }
+  },
+  "bounceIn": {
+    "effectIn": "animate__bounceIn",
+    "effectOut": "animate__bounceOut",
+    "category": "bounce",
+    "label": { "en": "Bounce In", "pt": "Quicar Entrando" },
+    "description": { "en": "Element scales up and bounces into view", "pt": "Elemento escala e quica até o tamanho normal" }
+  },
+  "bounceInDown": {
+    "effectIn": "animate__bounceInDown",
+    "effectOut": "animate__bounceOutUp",
+    "category": "bounce",
+    "label": { "en": "Bounce In Down", "pt": "Quicar Entrando por Cima" },
+    "description": { "en": "Element drops from the top bouncing into place", "pt": "Elemento cai do topo quicando até o lugar" }
+  },
+  "bounceInLeft": {
+    "effectIn": "animate__bounceInLeft",
+    "effectOut": "animate__bounceOutLeft",
+    "category": "bounce",
+    "label": { "en": "Bounce In Left", "pt": "Quicar Entrando pela Esquerda" },
+    "description": { "en": "Element slides from the left bouncing into place", "pt": "Elemento desliza da esquerda quicando" }
+  },
+  "bounceInRight": {
+    "effectIn": "animate__bounceInRight",
+    "effectOut": "animate__bounceOutRight",
+    "category": "bounce",
+    "label": { "en": "Bounce In Right", "pt": "Quicar Entrando pela Direita" },
+    "description": { "en": "Element slides from the right bouncing into place", "pt": "Elemento desliza da direita quicando" }
+  },
+  "bounceInUp": {
+    "effectIn": "animate__bounceInUp",
+    "effectOut": "animate__bounceOutDown",
+    "category": "bounce",
+    "label": { "en": "Bounce In Up", "pt": "Quicar Entrando por Baixo" },
+    "description": { "en": "Element rises from the bottom bouncing into place", "pt": "Elemento sobe do fundo quicando até o lugar" }
+  },
+  "fadeIn": {
+    "effectIn": "animate__fadeIn",
+    "effectOut": "animate__fadeOut",
+    "category": "fade",
+    "label": { "en": "Fade In", "pt": "Desvanecer" },
+    "description": { "en": "Element fades from transparent to opaque", "pt": "Elemento aparece suavemente, de transparente a opaco" }
+  },
+  "fadeInDown": {
+    "effectIn": "animate__fadeInDown",
+    "effectOut": "animate__fadeOutUp",
+    "category": "fade",
+    "label": { "en": "Fade In Down", "pt": "Desvanecer Descendo" },
+    "description": { "en": "Element fades in while sliding down from the top", "pt": "Elemento aparece deslizando de cima para baixo" }
+  },
+  "fadeInLeft": {
+    "effectIn": "animate__fadeInLeft",
+    "effectOut": "animate__fadeOutLeft",
+    "category": "fade",
+    "label": { "en": "Fade In Left", "pt": "Desvanecer pela Esquerda" },
+    "description": { "en": "Element fades in while sliding in from the left", "pt": "Elemento aparece deslizando da esquerda" }
+  },
+  "fadeInRight": {
+    "effectIn": "animate__fadeInRight",
+    "effectOut": "animate__fadeOutRight",
+    "category": "fade",
+    "label": { "en": "Fade In Right", "pt": "Desvanecer pela Direita" },
+    "description": { "en": "Element fades in while sliding in from the right", "pt": "Elemento aparece deslizando da direita" }
+  },
+  "fadeInUp": {
+    "effectIn": "animate__fadeInUp",
+    "effectOut": "animate__fadeOutDown",
+    "category": "fade",
+    "label": { "en": "Fade In Up", "pt": "Desvanecer Subindo" },
+    "description": { "en": "Element fades in while rising from the bottom", "pt": "Elemento aparece subindo do fundo" }
+  },
+  "hingeOut": {
+    "effectIn": "animate__jackInTheBox",
+    "effectOut": "animate__hinge",
+    "category": "special",
+    "label": { "en": "Jack In The Box / Hinge", "pt": "Jack na Caixa / Dobradiça" },
+    "description": { "en": "Element springs up like a jack-in-the-box and exits like a swinging door hinge", "pt": "Elemento surge como uma mola e sai girando como uma dobradiça" }
+  }
 }
